@@ -6,7 +6,7 @@ A fully-featured **Next.js 16 dashboard template** with authentication, API inte
 
 ## 🌐 Demo
 
-[Live Demo](https://your-demo-link.com)
+[Live Demo](https://dashboard-template-inky.vercel.app)
 
 ## ⚡ Features
 
@@ -40,22 +40,24 @@ A fully-featured **Next.js 16 dashboard template** with authentication, API inte
 
 ## ⚙️ Installation
 
-```bash
 # Clone repository
-git clone <your-repo-url>
+
+git clone [https://github.com/RashedulHaqueRasel1/dashboard-template](https://github.com/RashedulHaqueRasel1/dashboard-template)
 cd dashboard-template
 
 # Install dependencies
+
 npm install
 
 # Add environment variables
+
 cp .env.example .env
+
 # Then edit .env file with your API URL and secrets
 
 # Run development server
+
 npm run dev
-
-
 
 ## 🧑‍💻 Author
 
@@ -64,6 +66,4 @@ npm run dev
 Built with ❤️ using **Next.js**, **TypeScript**, and **Tailwind CSS**.
 
 📧 Email: [rashedulhaquerasel1@gmail.com](mailto:rashedulhaquerasel1@gmail.com)
-🌐 Portfolio: [https://rashedul-haque-rasel.vercel.app](https://rashedul-haque-rasel.vercel.app)
-
-```
+🌐 Portfolio: [Link](https://rashedul-haque-rasel.vercel.app)
