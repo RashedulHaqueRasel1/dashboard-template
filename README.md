@@ -25,7 +25,7 @@ A fully-featured **Next.js 16 dashboard template** with authentication, API inte
 
 ## 🛠 Tech Stack
 
-- **Frontend:** Next.js 16, React 19
+- **Frontend:** [Next.js 16.0.7](https://nextjs.org/)
 - **UI/Components:** ShadCN UI, Radix UI, Lucide React icons
 - **State Management:** React Query
 - **Forms & Validation:** React Hook Form, Zod
@@ -43,6 +43,7 @@ A fully-featured **Next.js 16 dashboard template** with authentication, API inte
 # Clone repository
 
 git clone [https://github.com/RashedulHaqueRasel1/dashboard-template](https://github.com/RashedulHaqueRasel1/dashboard-template)
+
 cd dashboard-template
 
 # Install dependencies
@@ -53,17 +54,23 @@ npm install
 
 cp .env.example .env
 
-# Then edit .env file with your API URL and secrets
+# ⚠️ Note:
+
+The project uses a .env file to manage environment variables.
+
+In the example .env, localhost URLs are provided.
 
 # Run development server
 
 npm run dev
 
-## 🧑‍💻 Author
+--
 
-**Rashedul Haque Rasel**
+# 🧑‍💻 Author
 
-Built with ❤️ using **Next.js**, **TypeScript**, and **Tailwind CSS**.
+Rashedul Haque Rasel
 
-📧 Email: [rashedulhaquerasel1@gmail.com](mailto:rashedulhaquerasel1@gmail.com)
-🌐 Portfolio: [Link](https://rashedul-haque-rasel.vercel.app)
+📧 [rashedulhaquerasel1@gmail.com](rashedulhaquerasel1@gmail.com)
+🌐 [Protfolio](https://rashedul-haque-rasel.vercel.app)
+
+Built with ❤️ using Next.js, TypeScript, and Tailwind CSS.
