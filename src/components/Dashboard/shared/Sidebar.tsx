@@ -32,15 +32,9 @@ import {
 import { Button } from "@/components/ui/button";
 
 const navigation = [
-  { name: "Dashboard Overview", href: "/", icon: HardDrive },
-  { name: "Listings", href: "/listings", icon: Ship },
-  { name: "Upload Listing", href: "/upload-listing", icon: ShoppingBasket },
-  { name: "Content Generator", href: "/content-generator", icon: NotebookText },
-  { name: "Saved Drafts", href: "/saved-drafts", icon: ShoppingBag },
-  { name: "Schedule Posts", href: "/schedule-posts", icon: MessageCircleMore },
-  { name: "Social Accounts", href: "/social-accounts", icon: Send },
-  { name: "Subscription", href: "/subscription", icon: Calendar },
-  { name: "Settings", href: "/settings", icon: CircleDollarSign },
+  { name: "Overview", href: "/", icon: HardDrive },
+  { name: "All Dealers", href: "/dealers", icon: Ship },
+  { name: "Submission Forms", href: "/submission-forms", icon: ShoppingBasket },
 ];
 
 export default function Sidebar() {
@@ -54,7 +48,7 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="flex h-screen w-64 flex-col bg-white border-r border-gray-200 fixed">
+    <div className="flex h-screen w-64 flex-col bg-[#07589E] border-r border-gray-200 fixed">
       {/* Logo */}
       <div className="flex  items-center py-5 justify-center px-6">
         <Link href="/" className="flex items-center ">
@@ -79,7 +73,7 @@ export default function Sidebar() {
             />
           </svg>
 
-          <h1 className="text-[#65A30D] text-[18px] font-bold ml-2">
+          <h1 className="text-[#4C87D4] text-[18px] font-bold ml-2">
             Lime Pitch
           </h1>
         </Link>
@@ -101,8 +95,8 @@ export default function Sidebar() {
               className={cn(
                 "flex items-center gap-3 rounded-lg p-3 text-base leading-[150%] tracking-[0%] font-semibold transition-colors",
                 isActive
-                  ? "bg-[#F8F9FA] text-[#65A30D] font-bold text-[16px]"
-                  : "text-[#65A30D] hover:bg-[#F8F9FA] hover:text-[#65A30D] font-normal",
+                  ? "bg-[#4C87D4] text-[#FFFFFF] font-bold text-[16px]"
+                  : "text-[#FFFFFF] hover:bg-[#4C87D4] hover:text-[#FFFFFF] font-normal",
               )}
             >
               <item.icon className="h-5 w-5" />

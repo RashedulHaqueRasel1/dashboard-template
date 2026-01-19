@@ -58,7 +58,7 @@ export default function DashboardHeader() {
           <Menu size={22} />
         </button>
 
-        <HeaderTitle title="Dashboard" subtitle="See your updates today!" />
+        <HeaderTitle title="Overview" subtitle="See your updates today!" />
       </div>
 
       {/* Right side */}
