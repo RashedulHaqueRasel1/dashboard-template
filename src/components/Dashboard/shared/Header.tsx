@@ -62,7 +62,27 @@ export default function DashboardHeader() {
       </div>
 
       {/* Right side */}
-      <div className="flex items-center gap-4"></div>
+      <div className="flex items-center gap-4">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="relative p-2 rounded-md border hover:bg-gray-100">
+              <Bell size={22} />
+              <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full animate-pulse"></span>
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuItem>No new notifications</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        {/* User Avatar */}
+        <Avatar className="cursor-pointer">
+          <AvatarImage src="/avatar.png" alt="User Avatar" />
+          <AvatarFallback>
+            <User2Icon />
+          </AvatarFallback>
+        </Avatar>
+      </div>
 
       {/* Logout Dialog */}
       <Dialog open={logoutDialogOpen} onOpenChange={setLogoutDialogOpen}>
