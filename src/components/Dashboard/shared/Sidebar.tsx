@@ -2,24 +2,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import {
-  LayoutDashboard,
-  Calendar,
-  NotebookText,
-  CircleDollarSign,
-  Ship,
-  LogOut,
-  HardDrive,
-  MessageCircleMore,
-  ShoppingBag,
-  ShoppingBasket,
-  Users,
-  Send,
-} from "lucide-react";
+import { Ship, LogOut, HardDrive, ShoppingBasket } from "lucide-react";
 import { useState } from "react";
-
 import { signOut } from "next-auth/react";
-import Image from "next/image";
 import {
   Dialog,
   DialogContent,
