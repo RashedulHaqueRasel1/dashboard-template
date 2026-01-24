@@ -5,7 +5,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-// ⬇ Extend NextAuth types
+// ==================
+// Extend NextAuth types
+// ==================
 declare module "next-auth" {
   interface Session {
     user: {
@@ -24,11 +26,11 @@ declare module "next-auth" {
     id: string;
     email: string;
     role: string;
-    token: string;
-    refreshToken: string;
     firstName?: string;
     lastName?: string;
     image?: string;
+    accessToken: string;
+    refreshToken: string;
   }
 }
 
@@ -37,11 +39,11 @@ declare module "next-auth/jwt" {
     id: string;
     email: string;
     role: string;
-    accessToken: string;
-    refreshToken: string;
     firstName?: string;
     lastName?: string;
     image?: string;
+    accessToken: string;
+    refreshToken: string;
   }
 }
 
@@ -62,32 +64,36 @@ const handler = NextAuth({
         try {
           const res = await fetch(`${baseUrl}/auth/login`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+            },
             body: JSON.stringify({
               email: credentials.email,
               password: credentials.password,
             }),
           });
 
-          const data = await res.json();
-          if (!res.ok) {
-            throw new Error(data.message || "Login failed");
+          const result = await res.json();
+
+          if (!res.ok || !result.status) {
+            throw new Error(result.message || "Login failed");
           }
 
-          const user = data.data.user;
+          const { user, accessToken } = result.data;
 
+          // ✅ VERY IMPORTANT: return EVERYTHING you need later
           return {
-            id: user.id,
+            id: user._id,
             email: user.email,
             role: user.role,
-            token: data.data.accessToken,
-            refreshToken: data.data.refreshToken,
             firstName: user.firstName,
             lastName: user.lastName,
-            image: user.image || null,
+            image: user.profileImage || "",
+            accessToken,
+            refreshToken: user.refreshToken,
           };
-        } catch (err) {
-          console.log("Authorize Error:", err);
+        } catch (error) {
+          console.error("Authorize Error:", error);
           throw new Error("Invalid email or password");
         }
       },
@@ -100,15 +106,16 @@ const handler = NextAuth({
 
   callbacks: {
     async jwt({ token, user }) {
+      // Runs only on login
       if (user) {
         token.id = user.id;
         token.email = user.email;
         token.role = user.role;
-        token.accessToken = user.token;
-        token.refreshToken = user.refreshToken;
         token.firstName = user.firstName;
         token.lastName = user.lastName;
         token.image = user.image;
+        token.accessToken = user.accessToken;
+        token.refreshToken = user.refreshToken;
       }
 
       return token;
@@ -116,16 +123,16 @@ const handler = NextAuth({
 
     async session({ session, token }) {
       session.user = {
-        id: token.id,
-        email: token.email,
-        role: token.role,
+        id: token.id as string,
+        email: token.email as string,
+        role: token.role as string,
         firstName: token.firstName,
         lastName: token.lastName,
         image: token.image,
       };
 
-      session.accessToken = token.accessToken;
-      session.refreshToken = token.refreshToken;
+      session.accessToken = token.accessToken as string;
+      session.refreshToken = token.refreshToken as string;
 
       return session;
     },
