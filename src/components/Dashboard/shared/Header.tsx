@@ -19,46 +19,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Bell, KeyIcon, LogOut, Menu, User2Icon } from "lucide-react";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
 import HeaderTitle from "../ReusableComponents/HeaderTitle";
 
-interface Notification {
-  _id: string;
-  message: string;
-  isViewed: boolean;
-}
-
-interface UserProfile {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  image?: { url?: string };
-}
-
 export default function DashboardHeader() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
-  const { data: session } = useSession();
-
-  //  DIRECT FAKE JSON DATA
-  const user: UserProfile = {
-    firstName: "John",
-    lastName: "Doe",
-    email: "john.doe@example.com",
-    image: {
-      url: "https://i.pravatar.cc/150?img=21",
-    },
-  };
-
-  const notifications: Notification[] = [
-    { _id: "1", message: "Your order has been shipped.", isViewed: false },
-    { _id: "2", message: "New message from support team.", isViewed: false },
-    { _id: "3", message: "System update completed.", isViewed: true },
-  ];
-
-  const unseenCount = notifications.filter((n) => !n.isViewed).length;
 
   const loading = false;
 
@@ -90,70 +58,30 @@ export default function DashboardHeader() {
           <Menu size={22} />
         </button>
 
-        <HeaderTitle
-          title="My Dashboard"
-          subtitle="Welcome back! Here’s what’s happening today...."
-        />
+        <HeaderTitle title="Overview" subtitle="See your updates today!" />
       </div>
 
       {/* Right side */}
       <div className="flex items-center gap-4">
-        <Link href="/notification">
-          <button className="relative p-2 rounded-full hover:bg-gray-100">
-            <Bell className="h-6 w-6 text-gray-600" />
-
-            {unseenCount > 0 && (
-              <span className="absolute -top-1 -right-1 min-w-[18px] h-5 px-1 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
-                {unseenCount}
-              </span>
-            )}
-          </button>
-        </Link>
-
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-3 px-3">
-              <Avatar className="h-8 w-8">
-                <AvatarImage
-                  src={user.image?.url || "/images/profile-mini.jpg"}
-                  alt="User"
-                />
-                <AvatarFallback>
-                  {user.firstName?.charAt(0)}
-                  {user.lastName?.charAt(0)}
-                </AvatarFallback>
-              </Avatar>
-
-              <div className="text-left">
-                <p className="text-sm font-medium">
-                  {user.firstName} {user.lastName}
-                </p>
-                <p className="text-xs text-gray-600">{user.email}</p>
-              </div>
-            </Button>
+            <button className="relative p-2 rounded-md border hover:bg-gray-100">
+              <Bell size={22} />
+              <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full animate-pulse"></span>
+            </button>
           </DropdownMenuTrigger>
-
-          <DropdownMenuContent align="end">
-            <Link href="/profile">
-              <DropdownMenuItem>
-                <User2Icon /> Profile
-              </DropdownMenuItem>
-            </Link>
-
-            <Link href="/profile/changePassword">
-              <DropdownMenuItem>
-                <KeyIcon /> Change Password
-              </DropdownMenuItem>
-            </Link>
-
-            <DropdownMenuItem
-              className="text-[#e5102e] hover:bg-[#feecee]"
-              onClick={() => setLogoutDialogOpen(true)}
-            >
-              <LogOut /> Sign Out
-            </DropdownMenuItem>
+          <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuItem>No new notifications</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+
+        {/* User Avatar */}
+        <Avatar className="cursor-pointer">
+          <AvatarImage src="/avatar.png" alt="User Avatar" />
+          <AvatarFallback>
+            <User2Icon />
+          </AvatarFallback>
+        </Avatar>
       </div>
 
       {/* Logout Dialog */}

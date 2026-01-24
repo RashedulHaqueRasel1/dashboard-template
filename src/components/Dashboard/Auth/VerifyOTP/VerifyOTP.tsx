@@ -79,12 +79,14 @@ export default function VerifyOTP() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#FAF8F6]">
       <div className="bg-white w-full max-w-xl rounded-2xl shadow-md p-10">
-        <h2 className="text-3xl font-semibold text-gray-800 mb-2">
-          Verify Your Account
-        </h2>
-        <p className="text-gray-500 mb-6">
-          Enter the 6-digit code sent to your email to continue.
-        </p>
+        <div className="text-center">
+          <h2 className="text-3xl font-semibold text-[#0B3B36] mb-4">
+            Verify Your Account
+          </h2>
+          <p className="text-[#343A40] mb-6">
+            Enter the 6-digit code sent to your email to continue.
+          </p>
+        </div>
 
         {/* OTP Inputs */}
         <div className="flex items-center gap-3 justify-center mb-4">
@@ -107,14 +109,14 @@ export default function VerifyOTP() {
         </div>
 
         {/* Timer + Resend */}
-        <div className="flex justify-between items-center text-sm text-gray-600 mb-6">
+        <div className="flex justify-between items-center text-sm text-[#343A40] mb-6">
           <div className="flex items-center gap-2">
             <span>⏱</span>
             <span>{String(timer).padStart(2, "0")} Second</span>
           </div>
 
           <div className="items-end">
-            <span className="text-gray-500 text-md mr-2 mb-1">
+            <span className="text-[#343A40] text-md mr-2 mb-1">
               Didn’t get a code?
             </span>
 
@@ -123,8 +125,8 @@ export default function VerifyOTP() {
               disabled={!canResend}
               className={`font-medium ${
                 canResend
-                  ? "text-red-600 hover:underline cursor-pointer"
-                  : "text-gray-400 cursor-not-allowed"
+                  ? "text-[#0B3B36] hover:underline cursor-pointer"
+                  : "text-[#343A40] cursor-not-allowed"
               }`}
             >
               Resend
@@ -133,8 +135,8 @@ export default function VerifyOTP() {
         </div>
 
         <button
-          className={`w-full bg-red-700 text-white py-3 rounded-md text-lg font-medium transition
-    ${loading ? "opacity-60 cursor-not-allowed" : "hover:bg-red-800 cursor-pointer"}
+          className={`w-full bg-[#0B3B36] text-white py-3 rounded-md text-lg font-medium transition
+    ${loading ? "opacity-60 cursor-not-allowed" : "hover:bg-[#0B3B36] cursor-pointer"}
   `}
           onClick={handleVerify}
           disabled={loading}

@@ -4,6 +4,7 @@ import { Eye, EyeOff, LoaderCircle } from "lucide-react";
 import useAuth from "@/lib/hooks/useAuth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export default function ResetPassword() {
   const [showPassword1, setShowPassword1] = useState(false);
@@ -30,18 +31,20 @@ export default function ResetPassword() {
   };
 
   return (
-    <div className="mx-auto container">
+    <div className="mx-auto container w-[500px]">
       <div className="bg-white rounded-2xl shadow-md p-10">
         {/* Header */}
-        <h2 className="text-3xl font-semibold text-gray-800 mb-2">
-          Create a New Password
-        </h2>
-        <p className="text-gray-500 mb-6">
-          Set a strong password to secure your account.
-        </p>
+        <div className="text-center">
+          <h2 className="text-3xl font-semibold text-[#0B3B36] mb-2">
+            Create a New Password
+          </h2>
+          <p className="text-[#343A40] mb-6">
+            Enter your email to recover your password
+          </p>
+        </div>
 
         {/* New Password */}
-        <label className="block text-gray-700 font-medium mb-1">
+        <label className="block text-[#343A40] font-medium mb-1">
           New Password
         </label>
         <div className="relative mb-5">
@@ -62,7 +65,7 @@ export default function ResetPassword() {
         </div>
 
         {/* Confirm Password */}
-        <label className="block text-gray-700 font-medium mb-1">
+        <label className="block text-[#343A40] font-medium mb-1">
           Confirm New Password
         </label>
         <div className="relative mb-8">
@@ -83,16 +86,16 @@ export default function ResetPassword() {
         </div>
 
         {/* Save Button */}
-        <button
-          className={`w-full bg-red-700 text-white py-3 rounded-md text-lg font-medium hover:bg-red-800 transition flex justify-center items-center gap-2 cursor-pointer ${
+        <Button
+          className={`w-full bg-[#0B3B36] text-white py-6 rounded-md text-lg font-medium hover:bg-[#0B3B36] transition flex justify-center items-center gap-2 cursor-pointer ${
             loading ? "cursor-not-allowed opacity-70" : ""
           }`}
           onClick={handleSave}
           disabled={loading}
         >
           {loading && <LoaderCircle />}
-          {loading ? "Saving..." : "Confirm"}
-        </button>
+          {loading ? "Saving..." : "Change Password"}
+        </Button>
       </div>
     </div>
   );
