@@ -45,13 +45,15 @@ export default function Login() {
   };
 
   return (
-    <div className="mx-auto container">
+    <div className="mx-auto container w-[500px]">
       <div className="bg-white rounded-2xl shadow-lg px-8 py-10">
         {/* Heading */}
-        <h1 className="text-3xl font-bold text-gray-900">Welcome!</h1>
-        <p className="text-gray-500 mt-1 text-sm">
-          Manage your orders, track shipments, and configure products easily.
-        </p>
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-[#0B3B36]">Welcome!</h1>
+          <p className="text-gray-500 mt-1 text-sm">
+            Access your account to manage your microsite.
+          </p>
+        </div>
 
         {/* Form */}
         <div className="mt-6 space-y-4">
@@ -104,19 +106,26 @@ export default function Login() {
 
             <Link
               href={"/forget-password"}
-              className="text-sm text-red-600 hover:underline cursor-pointer"
+              className="text-sm text-[#343A40] hover:underline cursor-pointer"
             >
               Forgot password?
             </Link>
           </div>
 
           <Button
-            className="w-full bg-[#8A1B00] hover:bg-[#701600] mt-4 text-white cursor-pointer"
+            className="w-full bg-[#0B3B36] hover:bg-[#0B3B36] mt-4 text-white cursor-pointer"
             onClick={handleSignIn}
             disabled={isLoading}
           >
             {isLoading ? "Signing in..." : "Sign In"}
           </Button>
+
+          <div className="text-center mt-4">
+            Don’t have an account?{" "}
+            <Link href={"/register"} className="text-[#343A40] font-semibold">
+              Sign Up
+            </Link>
+          </div>
         </div>
       </div>
     </div>
