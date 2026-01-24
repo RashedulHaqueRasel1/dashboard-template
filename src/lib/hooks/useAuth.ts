@@ -1,6 +1,4 @@
 // src/lib/hooks/useAuth.ts
-
-// src/lib/hooks/useAuth.ts
 "use client";
 
 import { useState } from "react";
