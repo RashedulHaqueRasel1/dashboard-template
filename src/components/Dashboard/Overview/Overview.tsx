@@ -1,12 +1,7 @@
 import CardOverview from "./CardOverview";
-import {
-  BookmarkPlus,
-  ChartLine,
-  CircleDollarSign,
-  WavesLadder,
-} from "lucide-react";
-import ChartOverview from "./ChartOverview";
+import { Anchor, ChartLine, Clock4, TrendingUp } from "lucide-react";
 import RecentOverview from "./RecentOverview";
+import QuickActions from "./QuickActions";
 
 export default function Overview() {
   return (
@@ -14,30 +9,30 @@ export default function Overview() {
       <div className="space-y-8">
         <div className="stat-cards flex gap-4">
           <CardOverview
-            title="Bookings"
+            title="Total Listings"
             numberInfo={100}
-            icon={<WavesLadder />}
+            icon={<Anchor />}
           />
           <CardOverview
-            title="Popular Course"
-            numberInfo={12}
+            title="Content Generated"
+            numberInfo={142}
             icon={<ChartLine />}
           />
           <CardOverview
-            title="Revenue"
-            numberInfo={45}
-            icon={<CircleDollarSign />}
+            title="Time Saved"
+            numberInfo={"47h"}
+            icon={<Clock4 />}
           />
           <CardOverview
-            title="Product Sales"
-            numberInfo={345}
-            icon={<BookmarkPlus />}
+            title="Engagement Rate"
+            numberInfo={"8.4%"}
+            icon={<TrendingUp />}
           />
         </div>
 
         <div>
           <div className="col-span-8">
-            <ChartOverview />
+            <QuickActions />
           </div>
         </div>
 

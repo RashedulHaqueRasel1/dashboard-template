@@ -43,39 +43,6 @@ export default function RecentOverview() {
     },
   ];
 
-  const products = [
-    {
-      item: "Product Name",
-      amount: "100 kg",
-      price: "$500/kg",
-      status: "In Stock",
-    },
-    {
-      item: "Product Name",
-      amount: "100 kg",
-      price: "$500/kg",
-      status: "Out of stock",
-    },
-    {
-      item: "Service Name",
-      amount: "100 pieces",
-      price: "$500/kg",
-      status: "In Stock",
-    },
-    {
-      item: "Product Name",
-      amount: "100 kg",
-      price: "$500/kg",
-      status: "In Stock",
-    },
-    {
-      item: "Service Name",
-      amount: "100 pieces",
-      price: "$500/kg",
-      status: "In Stock",
-    },
-  ];
-
   const statusBadge = (status: string) => {
     const color =
       status === "Paid" || status === "In Stock"
@@ -85,14 +52,16 @@ export default function RecentOverview() {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+    <div className="grid grid-cols-1 md:grid-cols-1 gap-5 w-full">
       {/* Recent Orders */}
       <Card>
         <CardHeader className="flex flex-row justify-between items-center">
-          <CardTitle className="text-lg font-semibold">Recent Order</CardTitle>
-          <Link href={"/"} className="text-sm text-green-600 cursor-pointer">
+          <CardTitle className="text-lg font-semibold">
+            Recent Listings
+          </CardTitle>
+          <Link href={"/"} className="text-sm text-[#65A30D] cursor-pointer">
             {" "}
-            View all{" "}
+            View All{" "}
           </Link>
         </CardHeader>
 
@@ -112,40 +81,6 @@ export default function RecentOverview() {
                 <tr key={i} className="border-b last:border-none">
                   <td className="py-3">{row.invoice}</td>
                   <td>{row.item}</td>
-                  <td>{row.amount}</td>
-                  <td>{row.price}</td>
-                  <td>{statusBadge(row.status)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </CardContent>
-      </Card>
-
-      {/* All Products */}
-      <Card>
-        <CardHeader className="flex flex-row justify-between items-center">
-          <CardTitle className="text-lg font-semibold">All Products</CardTitle>
-          <Link href={"/"} className="text-sm text-green-600 cursor-pointer">
-            {" "}
-            View all{" "}
-          </Link>
-        </CardHeader>
-
-        <CardContent>
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b text-gray-500">
-                <th className="py-2 text-left">Item</th>
-                <th className="py-2 text-left">Product Amount</th>
-                <th className="py-2 text-left">Price</th>
-                <th className="py-2 text-left">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((row, i) => (
-                <tr key={i} className="border-b last:border-none">
-                  <td className="py-3">{row.item}</td>
                   <td>{row.amount}</td>
                   <td>{row.price}</td>
                   <td>{statusBadge(row.status)}</td>
